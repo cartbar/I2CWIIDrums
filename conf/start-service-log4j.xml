@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <Configuration status="info" strict="true" name="XMLConfigTest"
+                   packages="org.apache.logging.log4j.test">
+      <Properties>
+        <Property name="filename">target/test.log</Property>
+      </Properties>
+      <Filter type="ThresholdFilter" level="trace"/>
+     
+      <Appenders>
+        <Appender type="Console" name="FLOW">
+          <Layout type="PatternLayout" pattern="%d{dd/MM/yyyy HH:mm:ss,SSS} | %t | %p | %C{1}.%M | %m %n"/><!-- class and line number -->
+        </Appender>
+        <RollingFile name="fileAppender" fileName="logs/I2CDrumKit.log" filePattern="logs/$${date:yyyy-MM}/IC2DrumKit-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{dd/MM/yyyy HH:mm:ss,SSS} | %t | %p | %C{1}.%M | %m %n</Pattern> 
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy /> 
+                <SizeBasedTriggeringPolicy size="250 MB" /> 
+            </Policies>
+        </RollingFile>
+      </Appenders>
+     
+      <Loggers>
+        <Root level="info">
+          <AppenderRef ref="fileAppender"/>
+        </Root>
+      </Loggers>
+     
+    </Configuration>
