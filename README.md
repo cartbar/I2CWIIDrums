@@ -31,13 +31,15 @@ The final piece of the puzzle was to install "loopMIDI" that allowed me to conne
 The end result was something that would work, usually, but needed a fair amound of prodding and poking.
 
 ## I2C
-At little bit of research uncovered that the connector on the Drum kit that plugged into the wiimote used I2C and I happened to have a spare Raspberry PI model B kicking around, so I thought I would try that.  I installed the latest Raspian lite (since I would be running this headless), and bought a "Keyes Wii Nunchuck Adapter Module Shield Breakout Arduino Flux Workshop" for a few pounds from Ebay.  I connected it to the PI GPIO as follows:
+A little bit of research uncovered that the connector on the Drum kit that plugged into the wiimote used I2C and I happened to have a spare Raspberry PI model B kicking around, so I thought I would try that.  I installed the latest Raspian lite (since I would be running this headless), and bought a "Keyes Wii Nunchuck Adapter Module Shield Breakout Arduino Flux Workshop" for a few pounds from Ebay.  I connected it to the PI GPIO as follows:
 
+```
        Adapter    PI
 Clock  1          5
 Data   2          3
 3v3    3          1
 Ground 4          6
+```
 
 I used the raspi-config command on the PI to enable the I2C functionality and edited /boot/config.txt to set the I2C speed to 400k, by adding the line
 
